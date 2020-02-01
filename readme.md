@@ -13,10 +13,10 @@
 
 ``` bash
 # Clone/fork the repository
-git clone --depth 1 https://github.com/itho/hackerrank.js.git
+git clone https://github.com/hugo-marcelo/hacker-rank.git
 
 # Change directory
-cd hackerrank
+cd hacker-rank
 
 # Install dependencies
 npm install
