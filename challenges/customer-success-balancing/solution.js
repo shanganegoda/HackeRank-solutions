@@ -35,7 +35,7 @@ function csRush(n, m, css, customers, vacant_css) {
     })
 
     // Calcula a quantidade de clientes que cada CSs pode atender e
-    // adiciona array
+    // adiciona no array de CSs
     customers.forEach(customer => {
         for (let index = 0; index < cssTrabalhando.length; index++){
             //incrementa o cliente
@@ -51,18 +51,13 @@ function csRush(n, m, css, customers, vacant_css) {
     })
 
     // Realiza a troca de posição para achar o maior peso ordenando o resultado
-    for (let index = 0; index < cssTrabalhando.length - 1; index++) {
-        if (cssTrabalhando[index][2] > cssTrabalhando[index + 1][2] || 
-            !cssTrabalhando[index + 1][2]) {
-            let aux = cssTrabalhando[index + 1];
-            cssTrabalhando[index + 1] = cssTrabalhando[index];
-            cssTrabalhando[index] = aux;
-        }
-    }
+    cssTrabalhando.sort((a, b) => {
+        return a[2] - b[2]
+    });
 
     // Retorna o id do CS caso seja o único trabalhando
     if (cssTrabalhando.length == 1) {
-        return cssTrabalhando[cssTrabalhando.length - 1][0];
+        return cssTrabalhando.pop()[0];
     }
 
     // Retorna 0 caso o peso dos últimos CSs trabalhando sejam iguais
@@ -72,7 +67,7 @@ function csRush(n, m, css, customers, vacant_css) {
     }
 
     // Retorna o CSs trabalhando com a maior quantidade de clientes a atender
-    return cssTrabalhando[cssTrabalhando.length-1][0];
+    return cssTrabalhando.pop()[0];
 }
 
 function main() {
